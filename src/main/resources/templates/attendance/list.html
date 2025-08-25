@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠一覧</title>
+    <link rel="stylesheet" th:href="@{/css/destyle.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <header>勤怠管理</header>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn-logout">ログアウト</button>
+        </form>
+
+        <!-- 打刻ボタン-->
+        <div class="button-group">
+            <form th:action="@{/attendance/punch/in}" method="post">
+                <button type="submit">出勤</button>
+            </form>
+
+            <form th:action="@{/attendance/punch/out}" method="post">
+                <button type="submit">退勤</button>
+            </form>
+        </div>
+
+        <!-- 勤怠一覧 -->
+        <h2>勤怠一覧</h2>
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>出勤</th>
+                    <th>退勤</th>
+                    <th>勤務時間</th>
+                    <th>遅刻</th>
+                    <th>早退</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="att : ${attendances}">
+                    <td th:text="${#temporals.format(att.date,'yyyy/MM/dd')}"></td>
+                    <td th:text="${#temporals.format(att.startTime, 'HH:mm')}"></td>
+                    <td>
+                        <span th:if="${att.endTime != null}" th:text="${#temporals.format(att.endTime, 'HH:mm')}"></span>
+                        <span th:if="${att.endTime == null}">未退勤</span>
+                    </td>
+                    <td th:text="${att.workingDurationFormatted}"></td>
+                    <td th:text="${att.lateStatus == '遅刻' ? '○' : '✖︎'}"></td>
+                    <td th:text="${att.leaveEarlyStatus == '早退' ? '○' : '✖︎'}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- <p><a th:href="@{/attendance/punch}">打刻に戻る</a></p> -->
+</body>
+</html>

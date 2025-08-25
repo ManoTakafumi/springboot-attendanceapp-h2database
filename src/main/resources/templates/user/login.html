@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン | 勤怠管理システム</title>
+
+    <!-- リセットCSS & アプリ用CSS -->
+    <link rel="stylesheet" th:href="@{/css/destyle.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <h1 class="app-title">勤怠管理システム</h1>
+        <h2>ログイン</h2>
+
+        <!-- エラ〜メッセージ -->
+        <div th:if="${param.error}" class="error-message">
+            <p style="color: red;">ユーザー名かーパスワードが違います</p>
+        </div>
+        <div th:if="${param.logout}">
+            <p style="color: green">ログアウトしました</p>
+        </div>
+
+
+        <form th:action="@{/user/login}" method="post" class="login-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <label for="username">ユーザー名</label>
+                <input type="text" id="username" name="username" placeholder="ユーザー名を入力" required autofocus/>
+            </div>
+
+            <div class="form-group">
+                <label>パスワード</label>
+                <input type="password" id="password" name="password" placeholder="パスワードを入力" required/>
+            </div>
+
+            <div>
+                <button type="submit" class="btn-login">ログイン</button>
+            </div>
+        </form>
+        <p class="form-footer">アカウントをお持ちでない方は <a th:href="@{/user/register}">新規登録</a></p>
+    </div>
+</body>
+</html>

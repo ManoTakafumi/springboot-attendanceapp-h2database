@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打刻</title>
+    <link rel="stylesheet" th:href="@{/css/destyle.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h2>出勤・退勤打刻</h2>
+    <form th:action="@{/attendance/punch/in}" method="post">
+        <button type="submit">出勤</button>
+    </form>
+
+    <form th:action="@{/attendance/punch/out}" method="post">
+        <button type="submit">退勤</button>
+    </form>
+
+    <p><a th:href="@{/attendance/list}">勤怠一覧を見る</a></p>
+</body>
+</html>
