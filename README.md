@@ -40,3 +40,13 @@ cd springboot-attendanceapp-h2database
 ブラウザでhttp://localhost:8080にアクセス
 
 ---
+## スクリーンショット
+
+### ログイン画面
+![ログイン画面](./images/login.png)
+
+### 登録画面
+![登録画面](./images/register.png)
+
+### 勤怠一覧
+![勤怠一覧](./images/list.png)
