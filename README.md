@@ -53,3 +53,10 @@ cd springboot-attendanceapp-h2database
 
 ### 勤怠一覧
 ![勤怠一覧](./images/list.png)
+
+---
+
+## 工夫した点
+・　打刻時に最新５件のみ保持する。
+・　遅刻・早退を判定して一覧に◯/✖︎で表示
+・　レスポンシブデザイン
