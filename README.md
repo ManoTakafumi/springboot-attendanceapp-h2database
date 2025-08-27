@@ -60,3 +60,4 @@ cd springboot-attendanceapp-h2database
 ・　打刻時に最新５件のみ保持する。
 ・　遅刻・早退を判定して一覧に◯/✖︎で表示
 ・　レスポンシブデザイン
+・　H2 Databaseをファイル保存に切替
